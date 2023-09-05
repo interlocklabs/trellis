@@ -3,7 +3,7 @@
 **Trellis is an open-source framework for programmatically
 orchestrating LLM workflows as Directed Acyclic Graphs (DAGs) in Python.** We've intentionally designed it to give 
 developers as much control as possible, and we've written documentation to make it incredibly easy to 
-get started. Start building with our [docs](interlocklabsinc.mintlify.app).
+get started. Start building with our [docs](https://interlocklabsinc.mintlify.app/documentation/introduction).
 
 ## Structure
 Trellis is composed of only three abstractions: `Node`, `DAG`, and `LLM`.
