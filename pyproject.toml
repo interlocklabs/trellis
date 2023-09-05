@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "trellis"
+version = "0.1.0"
+description = "DAG-based LLM execution framework."
+authors = ["Shivansh Rustagi <me@shivan.sh>", "Kamil Kisielewicz <kamil@tryinterlock.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.4.0"
+openai = "^0.27.9"
+python-dotenv = "^1.0.0"
+voluptuous = "^0.13.1"
+pytest-asyncio = "^0.21.1"
+pytest-mock = "^3.11.1"
+aiohttp = "^3.8.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+pythonpath = [".", "trellis"]
