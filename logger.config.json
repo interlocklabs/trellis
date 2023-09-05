@@ -21,7 +21,7 @@
         }
     },
     "root": {
-        "level": "DEBUG",
+        "level": "INFO",
         "handlers": ["console_info", "console_error"]
     }
 }

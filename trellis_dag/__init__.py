@@ -26,7 +26,7 @@ def safe_load_log_config(json_filepath: str) -> None:
     with open(json_filepath, "r") as f:
         config = json.load(f)
         config["root"]["level"] = (
-            "DEBUG" if not getenv("LOG_LEVEL") else getenv("LOG_LEVEL")
+            "INFO" if not getenv("LOG_LEVEL") else getenv("LOG_LEVEL")
         )
         logging.config.dictConfig(config)
 
