@@ -12,24 +12,8 @@ from .node import Node
 from .dag import DAG
 from .llm import LLM
 from .utils.status import Status
-from .utils.constants import CONFIG_PATH
 
 dotenv.load_dotenv()
-
-
-def safe_load_log_config(json_filepath: str) -> None:
-    if not exists(json_filepath):
-        raise FileNotFoundError(
-            f"Logging configuration file not found: {json_filepath}"
-        )
-
-    with open(json_filepath, "r") as f:
-        config = json.load(f)
-        config["root"]["level"] = (
-            "INFO" if not getenv("LOG_LEVEL") else getenv("LOG_LEVEL")
-        )
-        logging.config.dictConfig(config)
-
 
 def analyzer(name: str, _input: dict):
     if os.getenv("DISABLE_ANALYTICS") == 1:
@@ -40,5 +24,28 @@ def analyzer(name: str, _input: dict):
             host="https://app.posthog.com",
         ).capture(str(int(time.time())), name, _input)
 
+logging_config = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {"format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"}
+    },
+    "handlers": {
+        "console_info": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout",
+        },
+        "console_error": {
+            "class": "logging.StreamHandler",
+            "level": "WARNING",
+            "formatter": "simple",
+            "stream": "ext://sys.stderr",
+        },
+    },
+    "root": {"level": "INFO", "handlers": ["console_info", "console_error"]},
+}
 
-safe_load_log_config(CONFIG_PATH)
+logging_config["root"]["level"] = "INFO" if not getenv("LOG_LEVEL") else getenv("LOG_LEVEL")
+logging.config.dictConfig(logging_config)

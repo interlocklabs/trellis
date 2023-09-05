@@ -1,7 +1,6 @@
 import openai
 from os import getenv
 
-path = getenv("CONFIG_PATH")
 max_retries = getenv("DEFAULT_MAX_RETRIES")
 retry_delay = getenv("DEFAULT_RETRY_DELAY")
 rate_limit_delay = getenv("DEFAULT_RATE_LIMIT_DELAY")
@@ -9,7 +8,6 @@ rate_limit_delay = getenv("DEFAULT_RATE_LIMIT_DELAY")
 DEFAULT_MAX_RETRIES = int(max_retries) if max_retries else 3
 DEFAULT_RETRY_DELAY: int = int(retry_delay) if retry_delay else 5
 DEFAULT_RATE_LIMIT_DELAY: int = int(rate_limit_delay) if rate_limit_delay else 60
-CONFIG_PATH = path if path else "logger.config.json"
 
 
 OPENAI_MODELS = [
