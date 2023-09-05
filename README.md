@@ -15,20 +15,32 @@ Trellis is composed of only three abstractions: `Node`, `DAG`, and `LLM`.
 - LLM: a wrapper around a large language model with simple catches for common OpenAI errors. Currently, the only provider
   that Trellis supports is OpenAI.
 
+## Environment Variables
+- If you're going to use the LLM class, set:
+    - `OPENAI_API_KEY=YOUR_OPENAI_KEY`
+- If you don't want us to send telemetry data (in the `Node._init_()`, `LLM.execute()` (including prompts and responses from OpenAI) and `DAG.execute()` methods, info about nodes you create or dags you run), to an external server (currently (PostHog)[https://posthog.com/]) for analysis, set:
+    - `TRELLIS_DISABLE_TELEMETRY=1`
+- If you want to reduce the amount of information the logger returns, set:
+    - [for everything] `TRELLIS_LOG_LEVEL=DEBUG`
+    - [for status updates] `TRELLIS_LOG_LEVEL=INFO`
+    - [for only warnings] `TRELLIS_LOG_LEVEL=WARNING`
+    - [for errors which stop runtime] `TRELLIS_LOG_LEVEL=ERROR`
+    - [for only critical errors] `TRELLIS_LOG_LEVEL=CRITICAL`
+
 ## Install
 You can install Trellis with any of the following methods:
 
 ### Pip
 ```
-pip install trellis
+pip install trellis-dag
 ```
 
 ### Poetry
 ```
-poetry add trellis
+poetry add trellis-dag
 ```
 
 ### Conda
 ```
-conda install trellis
+conda install trellis-dag
 ```
