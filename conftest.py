@@ -1,7 +1,7 @@
 import pytest
 import aiohttp
-from trellis.node import Node
-from trellis.dag import DAG
+from trellis_dag.node import Node
+from trellis_dag import DAG
 
 
 class DummyNode(Node):

@@ -1,7 +1,7 @@
 import pytest
 from voluptuous import Invalid
 
-from trellis import Node
+from trellis_dag import Node
 
 
 def test_init(dummy_node: Node) -> None:

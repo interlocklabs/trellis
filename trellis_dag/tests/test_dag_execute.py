@@ -2,9 +2,9 @@ import pytest
 import aiohttp
 import asyncio
 
-from trellis import DAG
-from trellis import Node
-from trellis import LLM
+from trellis_dag import DAG
+from trellis_dag import Node
+from trellis_dag import LLM
 
 
 @pytest.mark.asyncio

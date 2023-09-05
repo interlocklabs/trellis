@@ -3,9 +3,10 @@ from asyncio import iscoroutinefunction
 from typing import Callable
 from abc import ABC, abstractmethod
 from uuid import uuid4
-from .utils.status import Status
-
 import logging
+
+from . import analyzer
+from .utils.status import Status
 
 
 class Node(ABC):
@@ -29,6 +30,27 @@ class Node(ABC):
         self.set_output_s(output_s)
         self.pre_execute_hook = lambda _: self.input
         self.post_execute_hook = lambda _: self.output
+        analyzer(
+            "node/added",
+            {
+                "id": self._id,
+                "name": self.name,
+                "input_s": input_s,
+                "output_s": output_s,
+            },
+        )
+
+    def to_dict(self):
+        return {
+            "id": self._id,
+            "name": self.name,
+            "status": self._status.name,
+            "input": self.input,
+            "output": self.output,
+            "execute_args": self.execute_args,
+            "input_s": self._input_s.schema,
+            "output_s": self._output_s.schema,
+        }
 
     def __repr__(self) -> str:
         return f"Node(name={self.name}, id={self._id}, status={self._status})"

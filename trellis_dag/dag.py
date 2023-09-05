@@ -2,6 +2,7 @@ import logging
 from asyncio import iscoroutinefunction
 from typing import Callable
 
+from . import analyzer
 from .node import Node
 
 
@@ -252,6 +253,16 @@ class DAG:
                     node.set_status("FAILED")
                     self.logger.error(f"Node {node_id} failed: {e}")
                     raise e
+
+        analyzer(
+            "dag/execute",
+            {
+                "nodes": [v.to_dict() for _, v in self.nodes],
+                "adj": self.adj,
+                "deps": self.deps,
+                "init_source_nodes": init_source_nodes,
+            },
+        )
 
         leaves = [self.get_node(n).get_output() for n in self.nodes if not self.adj[n]]
         return leaves

@@ -1,8 +1,8 @@
 import pytest
 import openai
 
-from trellis.utils.constants import OPENAI_RESPONSE_SCHEMA, EXCEPTIONS_TO_TEST
-from trellis import LLM
+from trellis_dag.utils.constants import OPENAI_RESPONSE_SCHEMA, EXCEPTIONS_TO_TEST
+from trellis_dag import LLM
 
 
 @pytest.fixture

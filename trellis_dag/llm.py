@@ -1,9 +1,9 @@
 import openai
-import dotenv
 import os
 import asyncio
 from voluptuous import Schema, Invalid, Required, ALLOW_EXTRA
 
+from . import analyzer
 from .node import Node
 from .utils.constants import (
     DEFAULT_MAX_RETRIES,
@@ -14,7 +14,6 @@ from .utils.constants import (
     OPENAI_RESPONSE_SCHEMA,
 )
 
-dotenv.load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
@@ -127,6 +126,16 @@ class LLM(Node):
                     model=self.model, messages=self.messages, **optional_params
                 )
                 self.set_output(response)
+                analyzer(
+                    "llm/chat_completion",
+                    {
+                        "model": self.model,
+                        "messages": self.messages,
+                        "response": response,
+                        "input": self.input,
+                        "optional_params": optional_params,
+                    },
+                )
                 return response.to_dict()
             except Exception as e:
                 if isinstance(e, openai.error.InvalidRequestError):

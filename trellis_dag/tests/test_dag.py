@@ -1,7 +1,7 @@
 import pytest
 
-from trellis import Node
-from trellis import DAG
+from trellis_dag import Node
+from trellis_dag import DAG
 
 
 def test_init(dag: DAG) -> None:
