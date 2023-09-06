@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "trellis_dag"
-version = "0.1.2"
+version = "0.1.3"
 description = "DAG-based LLM execution framework."
 authors = ["Shivansh Rustagi <me@shivan.sh>", "Kamil Kisielewicz <kamil@tryinterlock.com>"]
 license = "MIT"

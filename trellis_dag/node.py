@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from uuid import uuid4
 import logging
 
-from . import analyzer
+from .utils.analyzer import analyzer
 from .utils.status import Status
 
 

@@ -2,7 +2,7 @@ import logging
 from asyncio import iscoroutinefunction
 from typing import Callable
 
-from . import analyzer
+from .utils.analyzer import analyzer
 from .node import Node
 
 

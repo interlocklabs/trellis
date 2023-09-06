@@ -3,7 +3,7 @@ import os
 import asyncio
 from voluptuous import Schema, Invalid, Required, ALLOW_EXTRA
 
-from . import analyzer
+from .utils.analyzer import analyzer
 from .node import Node
 from .utils.constants import (
     DEFAULT_MAX_RETRIES,
