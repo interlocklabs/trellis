@@ -19,13 +19,13 @@ Trellis is composed of only three abstractions: `Node`, `DAG`, and `LLM`.
 - If you're going to use the LLM class, set:
     - `OPENAI_API_KEY=YOUR_OPENAI_KEY`
 - If you don't want us to send telemetry data (in the `Node._init_()`, `LLM.execute()` (including prompts and responses from OpenAI) and `DAG.execute()` methods, info about nodes you create or dags you run), to an external server (currently (PostHog)[https://posthog.com/]) for analysis, set:
-    - `TRELLIS_DISABLE_TELEMETRY=1`
+    - `DISABLE_TELEMETRY=1`
 - If you want to reduce the amount of information the logger returns, set:
-    - [for everything] `TRELLIS_LOG_LEVEL=DEBUG`
-    - [for status updates] `TRELLIS_LOG_LEVEL=INFO`
-    - [for only warnings] `TRELLIS_LOG_LEVEL=WARNING`
-    - [for errors which stop runtime] `TRELLIS_LOG_LEVEL=ERROR`
-    - [for only critical errors] `TRELLIS_LOG_LEVEL=CRITICAL`
+    - [for everything] `LOG_LEVEL=DEBUG`
+    - [for status updates] `LOG_LEVEL=INFO`
+    - [for only warnings] `LOG_LEVEL=WARNING`
+    - [for errors which stop runtime] `LOG_LEVEL=ERROR`
+    - [for only critical errors] `LOG_LEVEL=CRITICAL`
 
 ## Install
 You can install Trellis with any of the following methods:
