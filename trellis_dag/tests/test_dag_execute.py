@@ -16,10 +16,10 @@ async def test_CatFactsAPITool(cat_facts_api_tool) -> None:
     assert cat_facts_api_tool.get_output() == {}
 
     cat_facts_api_tool.set_execute_args(limit=1, max_length=140)
-    await cat_facts_api_tool.pre_hook()
+    await cat_facts_api_tool._pre_hook()
     cat_facts_api_tool.validate_input()
     await cat_facts_api_tool.execute()
-    await cat_facts_api_tool.post_hook()
+    await cat_facts_api_tool._post_hook()
 
     assert cat_facts_api_tool.get_status() == "SUCCESS"
     assert cat_facts_api_tool.validate_output()
@@ -34,10 +34,10 @@ async def test_ReadFromFileTool(read_from_file_tool) -> None:
     assert read_from_file_tool.get_output() == {}
 
     read_from_file_tool.set_execute_args(file_path="trellis/tests/data.txt")
-    await read_from_file_tool.pre_hook()
+    await read_from_file_tool._pre_hook()
     read_from_file_tool.validate_input()
     await read_from_file_tool.execute()
-    await read_from_file_tool.post_hook()
+    await read_from_file_tool._post_hook()
     read_from_file_tool.validate_output()
 
     assert read_from_file_tool.get_status() == "SUCCESS"
@@ -52,10 +52,10 @@ async def test_UselessFactsAPITool(useless_facts_api_tool) -> None:
     assert useless_facts_api_tool.get_input() == {}
     assert useless_facts_api_tool.get_output() == {}
 
-    await useless_facts_api_tool.pre_hook()
+    await useless_facts_api_tool._pre_hook()
     useless_facts_api_tool.validate_input()
     await useless_facts_api_tool.execute()
-    await useless_facts_api_tool.post_hook()
+    await useless_facts_api_tool._post_hook()
     useless_facts_api_tool.validate_output()
 
     assert useless_facts_api_tool.get_status() == "SUCCESS"
@@ -72,10 +72,10 @@ async def test_CorporateBSGeneratorAPITool(corporate_bs_generator_api_tool) -> N
     assert corporate_bs_generator_api_tool.get_input() == {}
     assert corporate_bs_generator_api_tool.get_output() == {}
 
-    await corporate_bs_generator_api_tool.pre_hook()
+    await corporate_bs_generator_api_tool._pre_hook()
     corporate_bs_generator_api_tool.validate_input()
     await corporate_bs_generator_api_tool.execute()
-    await corporate_bs_generator_api_tool.post_hook()
+    await corporate_bs_generator_api_tool._post_hook()
     corporate_bs_generator_api_tool.validate_output()
 
     assert corporate_bs_generator_api_tool.get_status() == "SUCCESS"
@@ -90,10 +90,10 @@ async def test_ImgFlipMemeNameAPITool(img_flip_meme_name_api_tool) -> None:
     assert img_flip_meme_name_api_tool.get_input() == {}
     assert img_flip_meme_name_api_tool.get_output() == {}
 
-    await img_flip_meme_name_api_tool.pre_hook()
+    await img_flip_meme_name_api_tool._pre_hook()
     img_flip_meme_name_api_tool.validate_input()
     await img_flip_meme_name_api_tool.execute()
-    await img_flip_meme_name_api_tool.post_hook()
+    await img_flip_meme_name_api_tool._post_hook()
     img_flip_meme_name_api_tool.validate_output()
 
     assert img_flip_meme_name_api_tool.get_status() == "SUCCESS"

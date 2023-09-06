@@ -213,7 +213,7 @@ class DAG:
                     )
                     node.set_execute_args(*a, **k)
                     self.logger.info(f"Executing node {node_id}")
-                    if iscoroutinefunction(node.pre_hook):
+                    if iscoroutinefunction(node._pre_hook):
                         await node._pre_hook()
                     else:
                         node._pre_hook()
@@ -229,7 +229,7 @@ class DAG:
                         await node.execute()
                     else:
                         node.execute()
-                    if iscoroutinefunction(node.post_hook):
+                    if iscoroutinefunction(node._post_hook):
                         await node._post_hook()
                     else:
                         node._post_hook()
