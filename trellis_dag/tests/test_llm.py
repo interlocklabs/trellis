@@ -115,6 +115,15 @@ async def test_paid_execute(llm, car_messages) -> None:
 
 
 @pytest.mark.asyncio
+async def test_free_execute(llm, car_messages) -> None:
+    llm.set_input({})
+    llm.set_messages(car_messages)
+    llm.set_output_s(OPENAI_RESPONSE_SCHEMA)
+    await llm.execute()
+    assert llm.validate_output()
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize("mocked_exception", EXCEPTIONS_TO_TEST)
 async def test_openai_errors(llm, car_messages, mocker, mocked_exception):
     mocker.patch.object(openai.ChatCompletion, "create", side_effect=mocked_exception)

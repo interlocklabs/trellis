@@ -2,6 +2,7 @@ import openai
 import os
 import asyncio
 from voluptuous import Schema, Invalid, Required, ALLOW_EXTRA
+from dotenv import load_dotenv
 
 from .utils.analyzer import analyzer
 from .node import Node
@@ -14,6 +15,7 @@ from .utils.constants import (
     OPENAI_RESPONSE_SCHEMA,
 )
 
+load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 

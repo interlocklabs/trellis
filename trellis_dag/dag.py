@@ -218,7 +218,7 @@ class DAG:
                     else:
                         node._pre_hook()
                     flag = node.validate_input()
-                    if not flag:
+                    if flag is False:
                         self.logger.error(
                             f"Node {node_id} input {node.input} is not valid for schema {node._input_s}"
                         )
@@ -234,7 +234,7 @@ class DAG:
                     else:
                         node._post_hook()
                     flag = node.validate_output()
-                    if not flag:
+                    if flag is False:
                         self.logger.error(
                             f"Node {node_id} output {node.output} is not valid for schema {node._output_s}"
                         )
@@ -257,9 +257,9 @@ class DAG:
         analyzer(
             "dag/execute",
             {
-                "nodes": [v.to_dict() for _, v in self.nodes],
-                "adj": self.adj,
-                "deps": self.deps,
+                "nodes": [v.to_dict() for _, v in self.nodes.items()],
+                "adj": str(self.adj),
+                "deps": str(self.deps),
                 "init_source_nodes": init_source_nodes,
             },
         )

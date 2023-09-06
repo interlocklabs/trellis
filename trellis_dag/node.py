@@ -35,8 +35,6 @@ class Node(ABC):
             {
                 "id": self._id,
                 "name": self.name,
-                "input_s": input_s,
-                "output_s": output_s,
             },
         )
 
@@ -48,8 +46,6 @@ class Node(ABC):
             "input": self.input,
             "output": self.output,
             "execute_args": self.execute_args,
-            "input_s": self._input_s.schema,
-            "output_s": self._output_s.schema,
         }
 
     def __repr__(self) -> str:

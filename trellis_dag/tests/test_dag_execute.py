@@ -1,6 +1,4 @@
 import pytest
-import aiohttp
-import asyncio
 
 from trellis_dag import DAG
 from trellis_dag import Node
@@ -33,7 +31,7 @@ async def test_ReadFromFileTool(read_from_file_tool) -> None:
     assert read_from_file_tool.get_input() == {}
     assert read_from_file_tool.get_output() == {}
 
-    read_from_file_tool.set_execute_args(file_path="trellis/tests/data.txt")
+    read_from_file_tool.set_execute_args(file_path="trellis_dag/tests/data.txt")
     await read_from_file_tool._pre_hook()
     read_from_file_tool.validate_input()
     await read_from_file_tool.execute()
@@ -150,7 +148,7 @@ async def test_execute_simple(
     LLM1.set_messages(messages_1)
     LLM2.set_messages(messages_2)
     LLM3.set_messages(messages_3)
-    init_dict = {node.get_id(): {"kwargs": {"file_path": "trellis/tests/data.txt"}}}
+    init_dict = {node.get_id(): {"kwargs": {"file_path": "trellis_dag/tests/data.txt"}}}
 
     dag.add_node(node)
     dag.add_node(LLM1)
